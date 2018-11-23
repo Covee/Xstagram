@@ -61,9 +61,9 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
     # 'django.contrib.humanize', # Handy template tags
     'django.contrib.admin',
+
 ]
 THIRD_PARTY_APPS = [
-    'crispy_forms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -71,6 +71,8 @@ THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
     'xstagram.users.apps.UsersAppConfig',
+    'xstagram.images.apps.ImagesConfig',
+    
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
