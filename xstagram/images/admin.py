@@ -5,7 +5,8 @@ from . import models
 @admin.register(models.Image)
 class ImageAdmin(admin.ModelAdmin):
     search_fields = [   # admin에 관련 필드를 검색할 수 있는 검색창 생성
-        'file'
+        'file',
+        'creator',
     ]
 
     list_filter = [     # admin 오른쪽에 filter 창이 생김. 여기선 location별로 필터 할 수 있게 된다.
