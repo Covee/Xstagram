@@ -11,6 +11,10 @@ class ImageSerializer(serializers.ModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
     
+    # 이렇게 하면 원래 image의 ForeignKey인 숫자 대신에 ImageSerializer 전체를 불러옴.
+    # 다시 말해서 object 안에 또 다른 object를 불러 올 수 있는 것임.
+    image = ImageSerializer()
+
     class Meta:
         model = models.Comment
         fields = '__all__'
@@ -18,6 +22,8 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class LikeSerializer(serializers.ModelSerializer):
     
+    image = ImageSerializer()
+
     class Meta:
         model = models.Like
         fields = '__all__'
