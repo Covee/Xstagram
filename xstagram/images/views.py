@@ -20,7 +20,6 @@ class ListAllComments(APIView):
 
 
 class ListAllLikes(APIView):
-    
     def get(self, request, format=None):
         all_likes = models.Like.objects.all()
         serializer = serializers.LikeSerializer(all_likes, many=True)
