@@ -1,26 +1,15 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from . import models, serializers
+from . import models
 
 
-class ListAllImages(APIView):
+class Feed(APIView):
 
-    def get(self, request, format=None):
-        all_images = models.Image.objects.all()
-        serializer = serializers.ImageSerializer(all_images, many=True)
-        return Response(data=serializer.data)
+    def get(self, request,  format=None):
+        user = request.user
+        following_users = user.following.all()
 
+        for following_user in following_users:
+            user_images = following_user.images.all()[:2]
 
-class ListAllComments(APIView):
-    
-    def get(self, request, format=None):
-        all_comments = models.Comment.objects.all()
-        serializer = serializers.CommentSerializer(all_comments, many=True)
-        return Response(data=serializer.data)
-
-
-class ListAllLikes(APIView):
-    def get(self, request, format=None):
-        all_likes = models.Like.objects.all()
-        serializer = serializers.LikeSerializer(all_likes, many=True)
-        return Response(data=serializer.data)
+        return Response(status=200)
