@@ -26,6 +26,10 @@ class Image(TimeStampedModel):
                         related_name='images'
                         )
 
+    @property   # property는 모델의 필드 중 하나임. function임.
+    def like_count(self):
+        return self.likes.all().count()
+
     def __str__(self):
         return '{} - {}'.format(self.location, self.caption)
 
