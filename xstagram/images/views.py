@@ -27,3 +27,11 @@ class Feed(APIView):
 # lambda를 써서 간단한 get_key 함수를 대체할 수 있다.
 # def get_key(image):
 #     return image.created_at
+
+
+class LikeImage(APIView):
+    def get(self, request, image_id, format=None):
+        print(image_id)
+        return Response(status=200)
+
+    
